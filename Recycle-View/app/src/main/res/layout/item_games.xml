@@ -64,48 +64,61 @@
 
 
 
-        <Button
-            android:id="@+id/btn_voted"
+        <ImageView
+            android:id="@+id/img_voted"
             android:layout_width="48dp"
-
             android:layout_height="wrap_content"
-            android:background="#fff"
             android:layout_margin="@dimen/margin_small"
-            android:drawableLeft="@drawable/ic_check_black_24dp"
+            android:src="@drawable/ic_check_black_24dp"
             android:gravity="center_vertical"
             android:padding="4dp" />
 
-        <Button
-            android:id="@+id/btn_unvoted"
-            android:layout_toRightOf="@id/btn_voted"
+        <ImageView
+            android:id="@+id/img_unvoted"
+            android:layout_toRightOf="@id/img_voted"
             android:layout_width="48dp"
             android:layout_margin="@dimen/margin_small"
             android:layout_height="wrap_content"
-            android:background="#fff"
-            android:drawableLeft="@drawable/ic_thumb_down_black_24dp"
+            android:gravity="center_vertical"
+            android:src="@drawable/ic_thumb_down_black_24dp"
              />
 
-        <Button
-            android:id="@+id/btn_comment"
-            android:layout_toRightOf="@id/btn_unvoted"
+        <ImageView
+            android:id="@+id/img_comment"
+            android:layout_toRightOf="@id/img_unvoted"
             android:layout_margin="@dimen/margin_small"
             android:layout_width="48dp"
             android:layout_height="wrap_content"
-            android:background="#fff"
-            android:drawableLeft="@drawable/ic_chat_bubble_outline_black_24dp"
+            android:src="@drawable/ic_chat_bubble_outline_black_24dp"
+            android:gravity="center_vertical"
             android:padding="4dp" />
 
-        <Button
-            android:id="@+id/btn_share"
+        <ImageView
+            android:id="@+id/img_share"
             android:layout_width="48dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_margin="@dimen/margin_small"
             android:layout_weight="0"
-            android:drawableLeft="@drawable/ic_share_black_24dp"
-
-            android:padding="4dp" />
+            android:src="@drawable/ic_share_black_24dp"
+            android:gravity="center_vertical"
+            android:padding="4dp"
+            android:layout_alignParentRight="true" />
 
     </RelativeLayout>
-
+    <EditText
+        android:id="@+id/txt_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:visibility="gone"
+        android:inputType="text"
+        />
+    <Button
+        android:id="@+id/btn_comment_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Send"
+        android:visibility="gone"/>
 </LinearLayout>

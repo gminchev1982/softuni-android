@@ -1,6 +1,9 @@
 package com.example.gminchev.myapplication;
 
+import android.util.Log;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -11,13 +14,15 @@ public class Games {
     private String title;
     private String imageUrl;
     private Integer voteCount;
+    private Integer commentCount;
     private boolean isVoted;
-    private List<String> comments;
+    private List<String> comments =new ArrayList<String>();
 
     public Games(String title, String imageUrl) {
         this.title = title;
         this.imageUrl = imageUrl;
         this.voteCount =0;
+        this.commentCount =0;
 
     }
 
@@ -37,7 +42,8 @@ public class Games {
         return comments;
     }
 
-    public Integer getCountComment (){
+    public  Integer commentCount (){
+
         return comments.size();
     }
 
@@ -48,4 +54,10 @@ public class Games {
     public boolean isVoted (){
         return isVoted;
     }
+
+    public void addComment(String s) {
+        comments.add(s);
+
+    }
+
 }
