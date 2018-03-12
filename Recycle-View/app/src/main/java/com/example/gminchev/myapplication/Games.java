@@ -2,6 +2,7 @@ package com.example.gminchev.myapplication;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * Created by GMinchev on 6.3.2018 г..
  */
 
-public class Games {
+public class Games implements Serializable {
     private String title;
     private String imageUrl;
     private Integer voteCount;

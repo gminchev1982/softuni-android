@@ -23,8 +23,8 @@ import butterknife.OnClick;
  */
 
 public class GamesViewHolder extends RecyclerView.ViewHolder {
-
     @BindView(R.id.txt_title)   TextView txtTitle;
+
     @BindView(R.id.txt_vote)    TextView txtVote;
     @BindView(R.id.txt_commentCount)  TextView txtCommentCount;
     @BindView(R.id.img_item)     ImageView imgItem;
@@ -33,6 +33,8 @@ public class GamesViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.img_comment)  ImageView imgComment;
     @BindView(R.id.txt_comment)  EditText txtComment;
     @BindView(R.id.btn_comment_save)  Button btn_commentSave;
+    @BindView(R.id.img_share)  ImageView imgShareComment;
+
     private Games dataItem;
     private Integer vote;
     private Integer countComment;
