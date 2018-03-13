@@ -1,6 +1,7 @@
 package com.example.gminchev.myapplication;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,11 +12,12 @@ import com.example.gminchev.myapplication.games.Games;
 import com.example.gminchev.myapplication.games.GamesAdapter;
 import com.example.gminchev.myapplication.games.GamesDatabase;
 import com.example.gminchev.myapplication.games.OnItemClickListener;
+import com.example.gminchev.myapplication.promotion.Promotion;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnItemClickListener {
-    private List<Games> data;
+    private List<BaseDataModel> data;
   private  static String TAG = "MainActivity";
   private  boolean isComment  = false;
 
@@ -58,7 +60,13 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         startActivity(i);
     }
 
-
+    @Override
+    public void onPromotionClick(Promotion item) {
+        String url = item.getUrl();
+        Intent i = new Intent(Intent.ACTION_VIEW,
+                Uri.parse(url));
+        startActivity(i);
+    }
 
 
 }

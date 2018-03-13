@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentViewHolder> {
-private ArrayList<String> comment;
+private ArrayList<String> comment = new ArrayList <>();
 
     public CommentAdapter(ArrayList comment) {
 
@@ -41,6 +41,6 @@ private ArrayList<String> comment;
 
     @Override
     public int getItemCount() {
-        return comment.size()+1;
+        return comment.size();
     }
 }

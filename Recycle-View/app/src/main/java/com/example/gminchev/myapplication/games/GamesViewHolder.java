@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.gminchev.myapplication.BaseViewHolder;
 import com.example.gminchev.myapplication.R;
 import com.squareup.picasso.Picasso;
 
@@ -18,7 +19,7 @@ import butterknife.OnClick;
  * Created by GMinchev on 6.3.2018 г..
  */
 
-public class GamesViewHolder extends RecyclerView.ViewHolder {
+public class GamesViewHolder extends BaseViewHolder<Games> {
     @BindView(R.id.txt_title)   TextView txtTitle;
 
     @BindView(R.id.txt_vote)    TextView txtVote;
@@ -43,8 +44,8 @@ public class GamesViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-
-    public void setData(Games data, OnItemClickListener clickListener) {
+    @Override
+      public void setData(Games data, OnItemClickListener clickListener) {
         dataItem = data;
         this.clickListener = clickListener;
         txtTitle.setText(data.getTitle());

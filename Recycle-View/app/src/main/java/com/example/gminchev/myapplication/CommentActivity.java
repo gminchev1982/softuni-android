@@ -15,25 +15,24 @@ import java.util.ArrayList;
  */
 
 public class CommentActivity extends AppCompatActivity {
-    private  boolean isComment  = true;
+    private boolean isComment = true;
     private ArrayList <String> comment = new ArrayList();
 
-    private  int position;
+    private int position;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_comment);
+        comment.add("first");
+        comment.add("second");
 
         RecyclerView recyclerView = findViewById(R.id.rec_comment);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        comment.add("first");
-        comment.add("second");
-
         CommentAdapter adapter = new CommentAdapter(comment);
-        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
-       ///adapter.setClickListener(this);
+        ///adapter.setClickListener(this);
     }
 }

@@ -2,6 +2,8 @@ package com.example.gminchev.myapplication.games;
 
 import android.util.Log;
 
+import com.example.gminchev.myapplication.BaseDataModel;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +13,7 @@ import java.util.List;
  * Created by GMinchev on 6.3.2018 г..
  */
 
-public class Games {
+public class Games extends BaseDataModel {
     private String title;
     private String imageUrl;
     private Integer voteCount;
