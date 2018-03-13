@@ -14,6 +14,7 @@ import com.example.gminchev.myapplication.games.GamesDatabase;
 import com.example.gminchev.myapplication.games.OnItemClickListener;
 import com.example.gminchev.myapplication.promotion.Promotion;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnItemClickListener {
@@ -42,18 +43,23 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
             Log.v(TAG, "Raboti");
 
        // Toast.makeText(this, "Hello OnItemClick", Toast.LENGTH_SHORT).show();
-
+        //ArrayList<String> ff = new ArrayList<>();
+        //ff.add ("audi");
+        //ff.add ("seat");
+        //ff.add ("skoda");
         Intent i = new Intent(this, CommentActivity.class);
-        /*ArrayList<String> comment = (ArrayList <String>) game.getComments();
+        //i.getStringArrayListExtra("data", "tt");
+
+        ArrayList<String> ff = (ArrayList <String>) game.getComments();
         Bundle bundle = new Bundle();
 
         String str2 = "coming through bundle";
 
         bundle.putString("string2", str2);
 
-        bundle.putStringArrayList("comment", comment);
+        bundle.putStringArrayList("comment", ff);
 
-        i.putExtras(bundle);*/
+        i.putExtras(bundle);
 
         //i.putStringArrayListExtra("comment", (ArrayList <String>) game.getComments());
 

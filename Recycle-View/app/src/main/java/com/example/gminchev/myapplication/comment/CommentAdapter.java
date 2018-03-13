@@ -9,13 +9,14 @@ import android.view.ViewGroup;
 import com.example.gminchev.myapplication.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by GMinchev on 13.3.2018 г..
  */
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentViewHolder> {
-private ArrayList<String> comment = new ArrayList <>();
+private ArrayList<String> comment= null;
 
     public CommentAdapter(ArrayList comment) {
 
@@ -35,8 +36,8 @@ private ArrayList<String> comment = new ArrayList <>();
 
     @Override
     public void onBindViewHolder(CommentViewHolder holder, int position) {
-        String item = comment.get(position);
-        holder.setData(item);
+        String item =comment.get(position);
+        holder.txtCommentList.setText(item);
     }
 
     @Override

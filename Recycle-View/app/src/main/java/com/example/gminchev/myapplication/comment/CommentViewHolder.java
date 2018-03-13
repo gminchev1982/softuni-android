@@ -26,7 +26,7 @@ class CommentViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    public void setData(String  data) {
-        txtCommentList.setText(data);
-    }
+    /*public void setData(Comment data) {
+        txtCommentList.setText(data .getTxt());
+    }*/
 }
