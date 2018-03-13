@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.gminchev.myapplication.MainActivity">
+    tools:context="com.example.gminchev.myapplication.CommentActivity">
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rec_comment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Heloo"
+        android:padding="@dimen/margin_small"
         />
+
 
 </LinearLayout>

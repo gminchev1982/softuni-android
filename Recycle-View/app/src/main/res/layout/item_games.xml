@@ -69,7 +69,7 @@
             android:layout_width="48dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_small"
-            android:src="@drawable/ic_check_black_24dp"
+            android:src="@drawable/ic_thumb_up_black_24dp"
             android:gravity="center_vertical"
             android:padding="4dp" />
 

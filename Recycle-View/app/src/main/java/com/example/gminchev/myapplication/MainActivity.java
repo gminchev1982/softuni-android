@@ -6,15 +6,15 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
-import org.w3c.dom.Comment;
+import com.example.gminchev.myapplication.games.Games;
+import com.example.gminchev.myapplication.games.GamesAdapter;
+import com.example.gminchev.myapplication.games.GamesDatabase;
+import com.example.gminchev.myapplication.games.OnItemClickListener;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements OnItemClickListener{
+public class MainActivity extends AppCompatActivity implements OnItemClickListener {
     private List<Games> data;
   private  static String TAG = "MainActivity";
   private  boolean isComment  = false;
@@ -36,27 +36,29 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     }
 
     @Override
-    public void onItemClick(View view, int position) {
+    public void onItemClick(Games game, int position) {
             Log.v(TAG, "Raboti");
 
        // Toast.makeText(this, "Hello OnItemClick", Toast.LENGTH_SHORT).show();
-        final Games game = data.get(position);
-        Intent i = new Intent(this, CommentActivity.class);
 
-        i.putExtra("game", (Serializable) game);
-        i.putExtra("position", position);
+        Intent i = new Intent(this, CommentActivity.class);
+        /*ArrayList<String> comment = (ArrayList <String>) game.getComments();
+        Bundle bundle = new Bundle();
+
+        String str2 = "coming through bundle";
+
+        bundle.putString("string2", str2);
+
+        bundle.putStringArrayList("comment", comment);
+
+        i.putExtras(bundle);*/
+
+        //i.putStringArrayListExtra("comment", (ArrayList <String>) game.getComments());
 
         startActivity(i);
     }
 
-    /** Called when the user taps the Send button */
-   /* public void sendMessage(View view) {
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.editText);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }*/
+
 
 
 }

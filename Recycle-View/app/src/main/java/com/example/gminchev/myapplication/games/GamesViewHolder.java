@@ -1,10 +1,5 @@
-package com.example.gminchev.myapplication;
+package com.example.gminchev.myapplication.games;
 
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-import android.support.graphics.drawable.VectorDrawableCompat;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +7,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.gminchev.myapplication.R;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -39,6 +35,8 @@ public class GamesViewHolder extends RecyclerView.ViewHolder {
     private Integer vote;
     private Integer countComment;
     private Integer co;
+    private OnItemClickListener clickListener;
+
     public GamesViewHolder(View itemView) {
 
         super(itemView);
@@ -46,8 +44,9 @@ public class GamesViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    public void setData(Games data) {
+    public void setData(Games data, OnItemClickListener clickListener) {
         dataItem = data;
+        this.clickListener = clickListener;
         txtTitle.setText(data.getTitle());
         Picasso.with(itemView.getContext()).load(data.getImageUrl()).into(imgItem);
         imgVoted.setEnabled(true);
@@ -94,5 +93,10 @@ public class GamesViewHolder extends RecyclerView.ViewHolder {
         txtComment.setText("");
         co++;
         txtCommentCount.setText(co.toString());
+    }
+
+    @OnClick (R.id.img_share)
+    public void onShareComment (){
+        clickListener.onItemClick( dataItem, 2);
     }
 }

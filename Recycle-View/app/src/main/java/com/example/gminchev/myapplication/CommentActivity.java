@@ -1,15 +1,14 @@
 package com.example.gminchev.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
-import java.io.Serializable;
-import java.util.List;
+import com.example.gminchev.myapplication.R;
+import com.example.gminchev.myapplication.comment.CommentAdapter;
+
+import java.util.ArrayList;
 
 /**
  * Created by minchev on 12.3.2018 г..
@@ -17,24 +16,24 @@ import java.util.List;
 
 public class CommentActivity extends AppCompatActivity {
     private  boolean isComment  = true;
-    private Serializable data;
+    private ArrayList <String> comment = new ArrayList();
+
     private  int position;
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_comment);
 
-        RecyclerView recyclerView = findViewById(R.id.rec_view);
+        RecyclerView recyclerView = findViewById(R.id.rec_comment);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Intent i = getIntent();
+        comment.add("first");
+        comment.add("second");
 
-        data = i.getSerializableExtra("game");
-        position = i.getIntExtra("position",0);
-        //Toast.makeText(this, "Position" + position, Toast.LENGTH_SHORT).show();
-
-        //GamesAdapter adapter = new GamesAdapter((List<String>) data);
-        //adapter.setClickListener(this);
+        CommentAdapter adapter = new CommentAdapter(comment);
+        adapter.notifyDataSetChanged();
+        recyclerView.setAdapter(adapter);
+       ///adapter.setClickListener(this);
     }
 }

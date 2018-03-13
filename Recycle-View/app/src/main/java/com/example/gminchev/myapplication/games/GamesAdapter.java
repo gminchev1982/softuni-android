@@ -1,11 +1,13 @@
-package com.example.gminchev.myapplication;
+package com.example.gminchev.myapplication.games;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import com.example.gminchev.myapplication.MainActivity;
+import com.example.gminchev.myapplication.R;
 
 import java.util.List;
 
@@ -13,7 +15,7 @@ import java.util.List;
  * Created by GMinchev on 6.3.2018 г..
  */
 
-class GamesAdapter extends RecyclerView.Adapter<GamesViewHolder> {
+public class GamesAdapter extends RecyclerView.Adapter<GamesViewHolder> {
 
     private List<Games> data;
     private static String TAG = "GamesAdapter";
@@ -40,10 +42,10 @@ class GamesAdapter extends RecyclerView.Adapter<GamesViewHolder> {
     @Override
     public void onBindViewHolder(final GamesViewHolder holder, final int position) {
         Games item = data.get(position);
-        holder.setData(item);
+        holder.setData(item, clickListener);
 
 
-            holder.imgShareComment.setOnClickListener(new View.OnClickListener() {
+            /*holder.imgShareComment.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
@@ -54,7 +56,7 @@ class GamesAdapter extends RecyclerView.Adapter<GamesViewHolder> {
                         Toast.makeText(holder.imgShareComment.getContext(), "Hello Error Onclick", Toast.LENGTH_SHORT).show();
                     }
                 }
-            });
+            });*/
 
 
     }

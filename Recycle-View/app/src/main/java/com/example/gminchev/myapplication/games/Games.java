@@ -1,4 +1,4 @@
-package com.example.gminchev.myapplication;
+package com.example.gminchev.myapplication.games;
 
 import android.util.Log;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * Created by GMinchev on 6.3.2018 г..
  */
 
-public class Games implements Serializable {
+public class Games {
     private String title;
     private String imageUrl;
     private Integer voteCount;
