@@ -20,6 +20,7 @@ public class Games extends BaseDataModel {
     private Integer commentCount;
     private boolean isVoted;
     private List<String> comments =new ArrayList<String>();
+    public ArrayList<String> setComment;
 
     public Games(String title, String imageUrl) {
         this.title = title;
@@ -43,6 +44,10 @@ public class Games extends BaseDataModel {
 
     public List<String> getComments() {
         return comments;
+    }
+
+    public void setComment (List<String> comments){
+        this.comments = comments;
     }
 
     public  Integer commentCount (){

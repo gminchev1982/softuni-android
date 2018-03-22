@@ -5,8 +5,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.gminchev.myapplication.CommentActivity;
 import com.example.gminchev.myapplication.R;
+import com.example.gminchev.myapplication.games.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +19,12 @@ import java.util.List;
  */
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentViewHolder> {
-private ArrayList<String> comment= null;
+private ArrayList<String> comment;
 
-    public CommentAdapter(ArrayList comment) {
+    public CommentAdapter(ArrayList<String> comment) {
 
         this.comment = comment;
-        Log.v("ADapter", "SIZE:  "  + comment.size());
+
     }
 
     @Override
@@ -37,11 +40,14 @@ private ArrayList<String> comment= null;
     @Override
     public void onBindViewHolder(CommentViewHolder holder, int position) {
         String item =comment.get(position);
-        holder.txtCommentList.setText(item);
+
+        holder.setData(item);
     }
 
     @Override
     public int getItemCount() {
         return comment.size();
     }
+
+
 }

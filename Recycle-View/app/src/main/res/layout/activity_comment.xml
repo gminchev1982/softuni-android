@@ -4,14 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.gminchev.myapplication.CommentActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rec_comment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="@dimen/margin_small"
-        />
+        android:layout_weight="1"
 
+        />
+    <EditText
+        android:id="@+id/txt_comment_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:inputType="text"
+        android:padding="@dimen/margin_small"
+
+
+        />
+    <Button
+        android:id="@+id/btn_comment_save_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Save"
+        android:layout_below="@id/txt_comment_list_view"
+
+       />
 
 </LinearLayout>

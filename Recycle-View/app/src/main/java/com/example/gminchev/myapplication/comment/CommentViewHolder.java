@@ -1,11 +1,14 @@
 package com.example.gminchev.myapplication.comment;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gminchev.myapplication.R;
+import com.example.gminchev.myapplication.games.OnItemClickListener;
 
 import org.w3c.dom.*;
 import org.w3c.dom.Comment;
@@ -19,6 +22,9 @@ import butterknife.ButterKnife;
 
 class CommentViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.txt_comment_list)  TextView txtCommentList;
+    OnItemClickListener ArrayListener;
+
+    private String TAG = "CommentViewHolder";
 
     public CommentViewHolder(View itemView) {
 
@@ -26,7 +32,14 @@ class CommentViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    /*public void setData(Comment data) {
+
+
+    public void setData(String item) {
+        txtCommentList.setText(item);
+    }
+
+
+    /*public void setData(Comment dat.a) {
         txtCommentList.setText(data .getTxt());
     }*/
 }
