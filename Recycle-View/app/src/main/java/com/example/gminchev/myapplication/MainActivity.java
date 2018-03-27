@@ -44,11 +44,7 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     public void onItemClick(Games game, int position) {
             Log.v(TAG, "Raboti");
 
-       // Toast.makeText(this, "Hello OnItemClick", Toast.LENGTH_SHORT).show();
-        //ArrayList<String> ff = new ArrayList<>();
-        //ff.add ("audi");
-        //ff.add ("seat");
-        //ff.add ("skoda");
+
         Intent i = new Intent(this, CommentActivity.class);
         //i.getStringArrayListExtra("data", "tt");
         startActivityForResult(i, REQUEST_CODE );

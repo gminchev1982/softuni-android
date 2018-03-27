@@ -29,8 +29,10 @@ import butterknife.OnClick;
 public class CommentActivity extends AppCompatActivity {
     private boolean isComment = true;
     private ArrayList<String> comment = new ArrayList<>();
-    @BindView(R.id.txt_comment_list_view)  TextView txtComment;
-    @BindView(R.id.btn_comment_save_view) Button btnSave;
+    @BindView(R.id.txt_comment_list_view)
+    TextView txtComment;
+    @BindView(R.id.btn_comment_save_view)
+    Button btnSave;
 
     private int position;
 
@@ -64,7 +66,7 @@ public class CommentActivity extends AppCompatActivity {
         //Toast.makeText(this, "Comment click!", Toast.LENGTH_SHORT).show();
         if (txtComment.getText().toString().trim().length() == 0) {
             Toast.makeText(this, "Comment is empty!", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             Toast.makeText(this, txtComment.getText().toString(), Toast.LENGTH_SHORT).show();
             comment.add(txtComment.getText().toString());
 
@@ -78,7 +80,7 @@ public class CommentActivity extends AppCompatActivity {
         String data = txtComment.getText().toString();
         Intent intent = new Intent();
         intent.putExtra("MyData", data);
-        setResult (RESULT_OK, intent);
+        setResult(RESULT_OK, intent);
         finish();
         super.onBackPressed();
     }
