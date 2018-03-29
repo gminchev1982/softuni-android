@@ -33,12 +33,16 @@ public class MainActivity extends AppCompatActivity {
         Log.v(TAG, "OnCreate");
         startService(new Intent(this,LocationService.class));
 
-       String Location = PreferenceManager.getDefaultSharedPreferences(this).getString(LocationListener.ShareKeyLongitude, "00");
-       txtLocation.setText(Location);
+        String Location = PreferenceManager.getDefaultSharedPreferences(this).getString(LocationListener.ShareKeyLongitude, "00");
+        txtLocation.setText(Location);
 
     }
 
-
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this, "OnResume", Toast.LENGTH_SHORT).show();
+        String Location = PreferenceManager.getDefaultSharedPreferences(this).getString(LocationListener.ShareKeyLongitude, "333333");
+        txtLocation.setText(Location);
+    }
 }
