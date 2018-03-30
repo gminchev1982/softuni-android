@@ -17,4 +17,6 @@ public class Constants {
     public static final String  EXTRA_LONGITUDE = "extra_longitude";
     public static  final String ShareKeyLongitude = "Longitude";
     public static  final String ShareKeyLatitude= "Latitude";
+    public static  final String ShareKeyAddress= "Address";
+
 }

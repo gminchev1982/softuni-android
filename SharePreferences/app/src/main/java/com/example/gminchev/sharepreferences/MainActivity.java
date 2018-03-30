@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         String longitude = PreferenceManager.getDefaultSharedPreferences(this).getString(Constants.ShareKeyLongitude, "00");
         String latitude = PreferenceManager.getDefaultSharedPreferences(this).getString(Constants.ShareKeyLatitude, "00");
+        String address = PreferenceManager.getDefaultSharedPreferences(this).getString(Constants.ShareKeyAddress, "00");
         txtLocation.setText(longitude + "/" + latitude);
+        Toast.makeText(this, "Address : "  + address, Toast.LENGTH_SHORT).show();
     }
 }

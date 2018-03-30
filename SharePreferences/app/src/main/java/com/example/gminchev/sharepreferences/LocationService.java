@@ -12,13 +12,17 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 /**
  * Created by GMinchev on 30.3.2018 г..
  */
 
 public class LocationService extends Service implements android.location.LocationListener {
     private static final String TAG = "LocationService";
-    public static final int LOCATION_INTERVAL = 5000;
+    public static final int LOCATION_INTERVAL = 1000;
     public static final float LOCATION_DISTANCE = 1f;
     LocationManager mLocationManager;
     private Location mLastLocation;
@@ -65,6 +69,37 @@ public class LocationService extends Service implements android.location.Locatio
     public void onLocationChanged(Location location) {
         double longitude = location.getLongitude();
         double latitude = location.getLatitude();
+
+        Geocoder geoCoder = new Geocoder(this, Locale.getDefault());
+        StringBuilder builder = new StringBuilder();
+        try {
+            List<Address> address = geoCoder.getFromLocation(latitude, longitude, 1);
+            Log.e(TAG, "List : " + address.toString());
+            String adminArea = address.get(0).getAdminArea();
+            String[] arrayArea = adminArea.split(" ");
+            String cityName = null;
+            if (arrayArea.length>0){
+                cityName = arrayArea[0];
+            }
+            Log.e(TAG, "Index : " +  arrayArea[0]);
+            /*for (int i=0; i<maxLines; i++) {
+                String addressStr = address.get(0).getAddressLine(i);
+                builder.append(addressStr);
+                builder.append(" ");
+            }*/
+
+            String finalAddress = builder.toString(); //This is the complete address.
+            Log.e(TAG, "Logitude : " + longitude);
+            Log.e(TAG, "finalAddress: " + finalAddress);
+           // Toast.makeText(this, "fnialAddress : "  + fnialAddress, Toast.LENGTH_SHORT).show();
+            PreferenceManager.getDefaultSharedPreferences(this).edit().putString(Constants.ShareKeyAddress, String.valueOf(cityName)).commit();
+           
+
+        } catch (IOException e) {
+            // Handle IOException
+        } catch (NullPointerException e) {
+            // Handle NullPointerException
+        }
 
         //sendBroadcastMessage(location);
         PreferenceManager.getDefaultSharedPreferences(this).edit().putString(Constants.ShareKeyLongitude, String.valueOf(longitude)).commit();
