@@ -13,5 +13,8 @@ public class Constants {
     public static final String EXTENDED_DATA_STATUS =
             "com.example.gminchev.sharepreferences.STATUS";
 
-
+    public static final String EXTRA_LATITUDE = "extra_latitude";
+    public static final String  EXTRA_LONGITUDE = "extra_longitude";
+    public static  final String ShareKeyLongitude = "Longitude";
+    public static  final String ShareKeyLatitude= "Latitude";
 }

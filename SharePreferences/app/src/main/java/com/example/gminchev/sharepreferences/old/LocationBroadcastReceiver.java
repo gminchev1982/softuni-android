@@ -1,4 +1,4 @@
-package com.example.gminchev.sharepreferences;
+package com.example.gminchev.sharepreferences.old;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

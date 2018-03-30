@@ -1,4 +1,4 @@
-package com.example.gminchev.sharepreferences;
+package com.example.gminchev.sharepreferences.old;
 
 import android.app.Service;
 import android.content.Context;
@@ -12,17 +12,19 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.gminchev.sharepreferences.Constants;
+
 /**
  * Created by GMinchev on 30.3.2018 г..
  */
 
-public class LocationService extends Service implements android.location.LocationListener {
+public class LocService extends Service  implements android.location.LocationListener{
     private static final String TAG = "LocationService";
-    public static final int LOCATION_INTERVAL = 5000;
+    public static final int LOCATION_INTERVAL = 1000;
     public static final float LOCATION_DISTANCE = 1f;
     LocationManager mLocationManager;
     private Location mLastLocation;
-    private String provider = LocationManager.GPS_PROVIDER;
+    private String provider  = LocationManager.GPS_PROVIDER;
 
     @Override
     public void onCreate() {
@@ -34,7 +36,7 @@ public class LocationService extends Service implements android.location.Locatio
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
-        // Toast.makeText(this, "OnStartCommand", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "OnStartCommand", Toast.LENGTH_SHORT).show();
         Log.v(TAG, "onStartCommand");
 
         try {
@@ -66,7 +68,7 @@ public class LocationService extends Service implements android.location.Locatio
         double longitude = location.getLongitude();
         double latitude = location.getLatitude();
 
-        //sendBroadcastMessage(location);
+       //sendBroadcastMessage(location);
         PreferenceManager.getDefaultSharedPreferences(this).edit().putString(Constants.ShareKeyLongitude, String.valueOf(longitude)).commit();
         PreferenceManager.getDefaultSharedPreferences(this).edit().putString(Constants.ShareKeyLatitude, String.valueOf(latitude)).commit();
     }
@@ -87,6 +89,8 @@ public class LocationService extends Service implements android.location.Locatio
     }
 
     private void initializeLocationManager() {
+       // Log.e(TAG, "initializeLocationManager - LOCATION_INTERVAL: " + LOCATION_INTERVAL + " LOCATION_DISTANCE: " + LOCATION_DISTANCE);
+
         if (mLocationManager == null) {
             mLocationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
         }

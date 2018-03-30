@@ -1,12 +1,15 @@
 package com.example.gminchev.sharepreferences;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
@@ -20,9 +23,10 @@ import butterknife.ButterKnife;
  */
 
 public class MainActivity extends AppCompatActivity {
- @BindView(R.id.txt_location)  TextView txtLocation;
+    @BindView(R.id.txt_location)
+    TextView txtLocation;
     private static final String TAG = "MainActivity";
-    private static  final String ShareKey = "Location";
+    private static final String ShareKey = "Location";
 
 
     @Override
@@ -30,19 +34,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        Log.v(TAG, "OnCreate");
-        startService(new Intent(this,LocationService.class));
+        Log.v(TAG, "OnCreate Main");
+        startService(new Intent(this, LocationService.class));
 
-        String Location = PreferenceManager.getDefaultSharedPreferences(this).getString(LocationListener.ShareKeyLongitude, "00");
-        txtLocation.setText(Location);
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(this, "OnResume", Toast.LENGTH_SHORT).show();
-        String Location = PreferenceManager.getDefaultSharedPreferences(this).getString(LocationListener.ShareKeyLongitude, "333333");
-        txtLocation.setText(Location);
+        String longitude = PreferenceManager.getDefaultSharedPreferences(this).getString(Constants.ShareKeyLongitude, "00");
+        String latitude = PreferenceManager.getDefaultSharedPreferences(this).getString(Constants.ShareKeyLatitude, "00");
+        txtLocation.setText(longitude + "/" + latitude);
     }
 }

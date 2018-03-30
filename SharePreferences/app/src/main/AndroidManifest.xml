@@ -23,7 +23,7 @@
             android:name=".LocationService"
             android:exported="false"/>
 
-        <receiver android:name=".LocationBroadcastReceiver"  android:exported="true">
+        <receiver android:name=".old.LocationBroadcastReceiver"  android:exported="true">
 
         </receiver>
 
