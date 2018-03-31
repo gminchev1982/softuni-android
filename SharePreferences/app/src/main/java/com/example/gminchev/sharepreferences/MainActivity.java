@@ -1,15 +1,8 @@
 package com.example.gminchev.sharepreferences;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
@@ -23,8 +16,8 @@ import butterknife.ButterKnife;
  */
 
 public class MainActivity extends AppCompatActivity {
-    @BindView(R.id.txt_location)
-    TextView txtLocation;
+    @BindView(R.id.txt_location)    TextView txtLocation;
+    @BindView(R.id.txt_weather)    TextView txtWeather;
     private static final String TAG = "MainActivity";
     private static final String ShareKey = "Location";
 
@@ -48,5 +41,10 @@ public class MainActivity extends AppCompatActivity {
         String address = PreferenceManager.getDefaultSharedPreferences(this).getString(Constants.ShareKeyAddress, "00");
         txtLocation.setText(longitude + "/" + latitude);
         Toast.makeText(this, "Address : "  + address, Toast.LENGTH_SHORT).show();
+
+
+
+
+
     }
 }

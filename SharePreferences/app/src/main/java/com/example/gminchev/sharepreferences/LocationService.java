@@ -80,20 +80,8 @@ public class LocationService extends Service implements android.location.Locatio
             String cityName = null;
             if (arrayArea.length>0){
                 cityName = arrayArea[0];
+                PreferenceManager.getDefaultSharedPreferences(this).edit().putString(Constants.ShareKeyAddress, String.valueOf(cityName)).commit();
             }
-            Log.e(TAG, "Index : " +  arrayArea[0]);
-            /*for (int i=0; i<maxLines; i++) {
-                String addressStr = address.get(0).getAddressLine(i);
-                builder.append(addressStr);
-                builder.append(" ");
-            }*/
-
-            String finalAddress = builder.toString(); //This is the complete address.
-            Log.e(TAG, "Logitude : " + longitude);
-            Log.e(TAG, "finalAddress: " + finalAddress);
-           // Toast.makeText(this, "fnialAddress : "  + fnialAddress, Toast.LENGTH_SHORT).show();
-            PreferenceManager.getDefaultSharedPreferences(this).edit().putString(Constants.ShareKeyAddress, String.valueOf(cityName)).commit();
-           
 
         } catch (IOException e) {
             // Handle IOException
