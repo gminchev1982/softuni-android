@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         WeatherService service = retrofit.create(WeatherService.class);
-        service.getWeatherDay("Sofia").enqueue(new Callback<WeatherModel>() {
+        service.getDay("Sofia").enqueue(new Callback<WeatherModel>() {
             @Override
             public void onResponse(Call<WeatherModel> call, Response<WeatherModel> response) {
                 Log.e(TAG, "Response : " + response.isSuccessful());
