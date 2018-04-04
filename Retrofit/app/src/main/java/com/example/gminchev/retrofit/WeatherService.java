@@ -10,15 +10,13 @@ import retrofit2.http.Path;
  */
 
 public interface WeatherService {
-    public  static final String URL = "http://api.openweathermap.org/data/2.5/";
-    public  static final String URLGame = "http://minchev.info/";
-    @GET("forecast?q=Sofia&appid=757a29d8eb6a37161fb81c451e4eb3ff")
-    Call<WeatherModel> getWeatherDay();
+    public static final String URL = "http://api.openweathermap.org/";
 
-    @GET("forecast?q={city}&appid=757a29d8eb6a37161fb81c451e4eb3ff")
-    Call<WeatherModel> getDay(@Part("city") String city );
+    @GET("/data/2.5/forecast?q=Sofia&appid=757a29d8eb6a37161fb81c451e4eb3ff")
+    Call <WeatherModel> getWeatherDay();
+    //@GET("users/list")
+    @GET("/data/2.5/forecast?q={ct}&appid=757a29d8eb6a37161fb81c451e4eb3ff&cnt=2")
+    Call <WeatherModel> getDay(@Path("ct") String ct);
 
-    @GET ("games.json")
-    Call<GameModel> getGame();
 }
 
