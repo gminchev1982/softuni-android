@@ -4,6 +4,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Created by GMinchev on 31.3.2018 г..
@@ -15,8 +16,8 @@ public interface WeatherService {
     @GET("/data/2.5/forecast?q=Sofia&appid=757a29d8eb6a37161fb81c451e4eb3ff")
     Call <WeatherModel> getWeatherDay();
     //@GET("users/list")
-    @GET("/data/2.5/forecast?q={ct}&appid=757a29d8eb6a37161fb81c451e4eb3ff&cnt=2")
-    Call <WeatherModel> getDay(@Path("ct") String ct);
+       @GET("/data/2.5/forecast?appid=757a29d8eb6a37161fb81c451e4eb3ff&cnt=2")
+    Call <WeatherModel> getDay(@Query("q") String ct);
 
 }
 

@@ -17,36 +17,37 @@ import static android.widget.Toast.makeText;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "ffMainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       Retrofit retrofit = new Retrofit.Builder()
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(WeatherService.URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-       WeatherService service = retrofit.create(WeatherService.class);
+        WeatherService service = retrofit.create(WeatherService.class);
 
-        service.getDay("Sofia").enqueue(new Callback<WeatherModel>() {
+        service.getDay("Sofia").enqueue(new Callback <WeatherModel>() {
             @Override
-            public void onResponse(Call<WeatherModel> call, Response<WeatherModel> response) {
+            public void onResponse(Call <WeatherModel> call, Response <WeatherModel> response) {
                 Log.e(TAG, "Response : " + response.isSuccessful());
                 if (response.isSuccessful()) {
                     WeatherModel data = response.body();
                     List <WeatherModel.Day> d = data.getDay();
 
-                    Log.e(TAG, "DAys  : "  + d.size());
-                    for (int i = 0; i<d.size(); i++){
+                    Log.e(TAG, "DAys  : " + d.size());
+                    for (int i = 0; i < d.size(); i++) {
                         WeatherModel.Day c = d.get(i);
                         WeatherModel.Weather[] w = c.getWeather();
                         String dec = w[0].getDescription();
                         //makeText(this, "Weater : " + dec, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(MainActivity.this, "Weater :"  + dec, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Weater :" + dec, Toast.LENGTH_SHORT).show();
                     }
 
-                   // txtWeather.setText(data.toString());
+                    // txtWeather.setText(data.toString());
                 }
             }
 
