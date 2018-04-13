@@ -1,11 +1,15 @@
 package com.example.gminchev.barcode;
 
 
+import android.arch.persistence.room.Room;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.gminchev.barcode.data.AppDatabase;
+import com.example.gminchev.barcode.data.ProductEntity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,10 +22,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.txt_barcode)
-    TextView txtBarcode;
-    @BindView(R.id.btn_search)
-    Button btnSearch;
+    @BindView(R.id.txt_barcode)    TextView txtBarcode;
+    @BindView(R.id.btn_search)    Button btnSearch;
+    @BindView(R.id.txt_code)    TextView txtCode;
+    @BindView(R.id.txt_product)    TextView txtProduct;
+    @BindView(R.id.txt_gredient)    TextView txtGredient;
+    AppDatabase db;
     private final static String TAG = "TAG";
 
     @Override
@@ -29,16 +35,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-    }
 
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "barcode.db").build();
+    }
 
     @OnClick(R.id.btn_search)
     public void onSearch() {
         Log.e(TAG, "ClickSearch");
 
-        String barcode = "7376280645502"; //txtBarcode.getText().toString();
+       // String barcode = "7376280645502";
+        String barcode =  txtBarcode.getText().toString();
 
-        Retrofit retrofit = new Retrofit.Builder()
+         ProductEntity res = db.ProductDao().searchBarcode(barcode);
+
+
+
+        /*Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(ProductService.URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -52,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Product data = response.body();
                     Log.e(TAG, "ddddd : "  + data.toString());
+                    txtCode.setText(data.getCode());
+                    txtProduct.setText(data.getProduct_name());
+                    txtGredient.setText(data.getIngredients_text());
+
                 }
 
             }
@@ -62,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, t.toString());
             }
         });
-
+*/
 
     }
 

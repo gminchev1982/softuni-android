@@ -9,7 +9,7 @@
             android:id="@+id/txt_barcode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
+            android:text="7376280645502"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -21,8 +21,42 @@
             android:layout_height="wrap_content"
             android:text="Search"/>
 
+    <TextView
+        android:id="@+id/txt_codetitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Code: "
+        />
 
+        <TextView
+            android:id="@+id/txt_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
+    <TextView
+        android:id="@+id/txt_prdtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product: "
+        />
+        <TextView
+            android:id="@+id/txt_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
+    <TextView
+        android:id="@+id/txt_grdtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingredient: "
+        />
+
+        <TextView
+            android:id="@+id/txt_gredient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 </LinearLayout>
 
