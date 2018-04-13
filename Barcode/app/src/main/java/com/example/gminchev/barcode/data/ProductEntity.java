@@ -7,39 +7,43 @@ import android.support.annotation.NonNull;
 
 @Entity
 public class ProductEntity {
-    @NonNull
-    @PrimaryKey
-    private String codeId;
 
-    @ColumnInfo(name="product_name")
+    @PrimaryKey(autoGenerate = true)
+    private int _id;
+
+    private String code;
+    @ColumnInfo
+    private int status;
+
+   /* @ColumnInfo(name="product_name")
     private String product_name;
 
     @ColumnInfo(name="ingredient")
     private String ingredient;
+*/
 
-
-
-    public String getCodeId() {
-        return codeId;
+    public int get_id() {
+        return _id;
     }
 
-    public void setCodeId(String code) {
-        this.codeId = code;
+    public void set_id(int _id) {
+        this._id = _id;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getCode() {
+        return code;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getIngredient() {
-        return ingredient;
+
+    public int getStatus() {
+        return status;
     }
 
-    public void setIngredient(String ingredient) {
-        this.ingredient = ingredient;
+    public void setStatus(int status) {
+        this.status = status;
     }
 }
