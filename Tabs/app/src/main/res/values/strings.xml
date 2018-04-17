@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Tabs</string>
+    <string name="overall">Overall</string>
+    <string name="details">Details</string>
+    <string name="scanner">Frag 2</string>
+    <string name="gifts">Frag 3</string>
+    <string name="profile">Frag 4</string>
+    <string name="campaigns">Promotions</string>
+</resources>
