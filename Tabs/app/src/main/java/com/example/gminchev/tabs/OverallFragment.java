@@ -22,15 +22,7 @@ public class OverallFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        FragmentActivity activityCompat = getActivity();
-        if(activityCompat instanceof TimeLineFragment.OnFragmentDataReceived) {
-            listener = (TimeLineFragment.OnFragmentDataReceived) activityCompat;
-        } else {
-            throw new RuntimeException("You must implement my interface");
-        }
 
-        //some of our code
-        listener.onDataReceived("yess overall");
     }
 
 

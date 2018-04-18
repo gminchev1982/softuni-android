@@ -20,34 +20,7 @@ public class DetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_detail, container, false);
         return view;
     }
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-
-
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        FragmentActivity activityCompat = getActivity();
-        if(activityCompat instanceof TimeLineFragment.OnFragmentDataReceived) {
-            listener = (TimeLineFragment.OnFragmentDataReceived) activityCompat;
-        } else {
-            throw new RuntimeException("You must implement my interface");
-        }
-
-        //some of our code
-        listener.onDataReceived("yess detail");
-        Log.e ("Detail", "onAttach");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        listener = null;
-    }
 
 
 
