@@ -1,7 +1,6 @@
 package com.example.gminchev.tabs;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -9,9 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -22,10 +19,26 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.gminchev.tabs.dataRoom.WeatherDatabase;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity implements TimeLineFragment.OnFragmentDataReceived {
     private Toolbar toolbar;
+    private FusedLocationProviderClient mFusedLocationClient;
+    WeatherDatabase db;
+    private double mLatitude;
+    private double mLongitude;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -33,24 +46,10 @@ public class MainActivity extends AppCompatActivity implements TimeLineFragment.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
-
-        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        Log.e("Test", "IHUU");
-        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-        if (location!=null){
-            Toast.makeText(this, "Lat: " + location.getLatitude() + "Lot " + location.getLongitude(), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Location null: ", Toast.LENGTH_SHORT).show();
-        }
-
-
-        setupToolbar();
-
+      //   db = Room.databaseBuilder(getApplicationContext(), WeatherDatabase.class, "weather.db").build();
+       setupLocation();
+       setupToolbar();
+       setupData();
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -58,6 +57,57 @@ public class MainActivity extends AppCompatActivity implements TimeLineFragment.
         fragmentTransaction.add(R.id.grp_container, fragment);
         fragmentTransaction.disallowAddToBackStack();
         fragmentTransaction.commit();
+    }
+
+    private void setupData() {
+        long s = 1524208410;
+        String date = getTimestampToDate(s);
+        Log.e("date", date.toString());
+    }
+
+    public static String toISO8601UTC(Date date) {
+        TimeZone tz = TimeZone.getTimeZone("UTC");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+        df.setTimeZone(tz);
+        return df.format(date);
+    }
+
+    public String getTimestampToDate(long  time){
+        Date date = new Date(time*1000L); // *1000 is to convert seconds to milliseconds
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // the format of your date
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT-3"));
+
+        return sdf.format(date);
+
+    }
+
+    private void setupLocation() {
+
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        
+        mFusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            // Logic to handle location object
+                            mLatitude = location.getLatitude();
+                            mLongitude = location.getLongitude();
+                            Log.e("lat", String.valueOf(mLatitude));
+                            Log.e("long", String.valueOf(mLongitude));
+                        }
+                    }
+                })
+                .addOnFailureListener(this, new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity.this, "Error with GPS!", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void setupToolbar() {
