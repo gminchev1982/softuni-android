@@ -5,10 +5,16 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface WeatherService {
-    public static final String URL = "http://api.openweathermap.org/";
-    @GET("/data/2.5/weather?appid=757a29d8eb6a37161fb81c451e4eb3ff&units=metric")
-    Call<CurrentWeather> getCurrentWeather(@Query("lat") String lat, @Query("lot") String lot);
 
-    @GET("/data/2.5/daily?appid=757a29d8eb6a37161fb81c451e4eb3ff&cnt=1&units=metric")
-    Call<DailyForecast> getDailyForecast(@Query("lat") String lat, @Query("lot") String lot);
+    public static final String BASE_URL = "http://api.openweathermap.org/data/2.5/";
+    public static final String API_KEY = "37426f016190340c55b693d9a76e5015";
+
+    @GET("weather")
+    Call<CurrentWeather> getCurrentWeather(@Query("lat") String lat, @Query("lon") String lon, @Query("APPID") String apiKet, @Query("units") String units);
+
+    @GET("forecast/daily")
+    Call<DailyForecast> getDailyForecast(@Query("lat") String lat, @Query("lon") String lon, @Query("APPID") String apiKet, @Query("cnt") int daysCount, @Query("units") String units);
+
+    @GET("forecast")
+    Call<HourlyForecast> getHourlyForecast(@Query("lat") String lat, @Query("lon") String lon, @Query("APPID") String apiKet, @Query("cnt") int hoursCount, @Query("units") String units);
 }

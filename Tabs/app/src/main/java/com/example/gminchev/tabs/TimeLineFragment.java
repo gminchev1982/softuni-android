@@ -1,22 +1,13 @@
 package com.example.gminchev.tabs;
 
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.LocaleList;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -25,7 +16,7 @@ import com.example.gminchev.tabs.databinding.FragmentTimelineBinding;
 public class TimeLineFragment extends Fragment {
 
     FragmentTimelineBinding binding;
-    private OnFragmentDataReceived listener;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,12 +34,6 @@ public class TimeLineFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        FragmentActivity activityCompat = getActivity();
-        if(activityCompat instanceof TimeLineFragment.OnFragmentDataReceived) {
-            listener = (TimeLineFragment.OnFragmentDataReceived) activityCompat;
-        } else {
-            throw new RuntimeException("You must implement my interface");
-        }
 
 
     }
@@ -77,7 +62,7 @@ public class TimeLineFragment extends Fragment {
             public void onPageSelected(int position) {
 
 
-                listener.onDataReceived( position);
+                //listener.onTitleChange( );
             }
 
             @Override
@@ -90,9 +75,6 @@ public class TimeLineFragment extends Fragment {
 
     }
 
-    public interface OnFragmentDataReceived {
-        void onDataReceived(Integer position);
-    }
 
 
 

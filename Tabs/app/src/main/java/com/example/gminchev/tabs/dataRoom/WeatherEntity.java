@@ -6,10 +6,10 @@ import android.arch.persistence.room.PrimaryKey;
 public class WeatherEntity {
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private String dt;
+    private long dt;
     private String locationName;
     private String imgUrl;
-    private String weatherType;
+    private int weatherType;
     private String shortDescription;
     private String longDescription;
     private double temperature;
@@ -25,11 +25,11 @@ public class WeatherEntity {
         return id;
     }
 
-    public String getDt() {
+    public long getDt() {
         return dt;
     }
 
-    public void setDt(String dt) {
+    public void setDt(long dt) {
         this.dt = dt;
     }
 
@@ -53,11 +53,11 @@ public class WeatherEntity {
         this.imgUrl = imgUrl;
     }
 
-    public String getWeatherType() {
+    public int getWeatherType() {
         return weatherType;
     }
 
-    public void setWeatherType(String weatherType) {
+    public void setWeatherType(int  weatherType) {
         this.weatherType = weatherType;
     }
 
