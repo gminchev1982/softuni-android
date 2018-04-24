@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.example.gminchev.tabs.api.Api;
 import com.example.gminchev.tabs.dataModel.CurrentWeather;
 import com.example.gminchev.tabs.dataModel.DailyForecast;
 import com.example.gminchev.tabs.dataModel.HourlyForecast;
+import com.example.gminchev.tabs.dataModel.helper_models.Forecast;
 import com.example.gminchev.tabs.databinding.FragmentDetailBinding;
 
 public class DetailFragment extends Fragment {
@@ -33,6 +35,7 @@ public class DetailFragment extends Fragment {
     }
 
     private void setupViews() {
+        binding.recView.setLayoutManager(new LinearLayoutManager(getContext()));
         updateData();
     }
 
@@ -48,9 +51,6 @@ public class DetailFragment extends Fragment {
                     Log.e("TAG", "Onsuccess");
                    // binding.swiperefresh.setRefreshing(false);
                 }
-
-
-
                 @Override
                 public void onError() {
                   //  binding.swiperefresh.setRefreshing(false);
@@ -62,7 +62,11 @@ public class DetailFragment extends Fragment {
 
 
     private void updateHourlyWeather(HourlyForecast data) {
-        binding.recView.setAdapter(new ForecastAdapter(data));
+        Log.e("TAG", "updateHourly"  );
+
+        ForecastAdapter adapter = new ForecastAdapter(data);
+        binding.recView.setAdapter(adapter);
+        Log.e("TAG", "updateHourly"  );
     }
 
 }

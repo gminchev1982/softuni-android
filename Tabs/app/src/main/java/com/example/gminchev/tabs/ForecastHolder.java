@@ -1,6 +1,7 @@
 package com.example.gminchev.tabs;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.example.gminchev.tabs.dataModel.helper_models.ShortForecast;
 import com.example.gminchev.tabs.databinding.WeatherDetailCardBinding;
