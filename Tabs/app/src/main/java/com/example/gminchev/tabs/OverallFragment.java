@@ -131,7 +131,7 @@ public class OverallFragment extends Fragment{
         grpCurrentWeather.txtClouds.setText(getString(R.string.percantage_placeholder, (int) data.getCloudinessInPercentage()));
         grpCurrentWeather.txtWind.setText(getString(R.string.m_per_s_placeholder, (int) data.getWindSpeed()));
         grpCurrentWeather.txtHumidity.setText(getString(R.string.percantage_placeholder, (int) data.getHumidity()));
-
+        grpCurrentWeather.grpCard.setOnClickListener(v->Log.e("click cart", "click"));
 
     }
     private void updateDailyForecast(DailyForecast data) {

@@ -1,6 +1,7 @@
 package com.example.gminchev.tabs;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.example.gminchev.tabs.dataModel.helper_models.ShortForecast;
@@ -25,5 +26,11 @@ public class ForecastHolder extends RecyclerView.ViewHolder {
         binding.txtDescription.setText(shortForecast.getWeatherLongDescription());
         binding.txtShortWeather.setText(shortForecast.getWeatherShortDescription());
         binding.txtTemp.setText(binding.getRoot().getContext().getString(R.string.temperature_holder, (int) shortForecast.getTemperature()));
+
+        binding.grpCard.setOnClickListener((view)->{
+            Log.e ("click", "click");
+        });
     }
+
+
 }

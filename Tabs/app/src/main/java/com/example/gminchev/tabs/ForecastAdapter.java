@@ -26,6 +26,9 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastHolder> {
 
         WeatherDetailCardBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
                 R.layout.weather_detail_card, parent, false);
+
+
+
         return new ForecastHolder(binding);
 
 
@@ -34,6 +37,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastHolder> {
     @Override
     public void onBindViewHolder(ForecastHolder holder, int position) {
         holder.bind(data.getForecasts().get(position));
+
     }
 
     @Override
