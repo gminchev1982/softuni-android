@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        /*alarmMgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, SampleBootReceiver.class);
         alarmIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
 
@@ -33,7 +33,17 @@ public class MainActivity extends AppCompatActivity {
 // 20 minutes.
         alarmMgr.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + FIFTEEN_SEC_MILLIS,
                 FIFTEEN_SEC_MILLIS , alarmIntent);
-        Toast.makeText(this, "ddd", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "ddd", Toast.LENGTH_SHORT).show();*/
 
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+
+        alarmMgr = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, SampleBootReceiver.class);
+        alarmIntent = PendingIntent.getBroadcast(this,  0, intent, 0);
+
+        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),5000 , alarmIntent);
+        Toast.makeText(this, "ddd", Toast.LENGTH_SHORT).show();
     }
 }

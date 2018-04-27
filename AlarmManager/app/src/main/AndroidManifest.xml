@@ -19,11 +19,8 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".SampleBootReceiver"
-            android:enabled="false" android:process=":remote">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
-            </intent-filter>
+        <receiver android:name=".SampleBootReceiver">
+
         </receiver>
     </application>
 
