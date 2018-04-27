@@ -5,10 +5,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.example.gminchev.tabs.service.OnCartListener;
+
 
 class TimelinePagerAdapter  extends FragmentPagerAdapter {
 
     private  Context context;
+
 
     public TimelinePagerAdapter(Context context, FragmentManager fm) {
         super(fm);
@@ -43,4 +46,6 @@ class TimelinePagerAdapter  extends FragmentPagerAdapter {
                 return null;
         }
     }
+
+
 }

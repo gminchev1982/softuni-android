@@ -2,6 +2,7 @@ package com.example.gminchev.tabs;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
@@ -22,10 +23,17 @@ import android.widget.Toast;
 
 import com.example.gminchev.tabs.dataRoom.WeatherDatabase;
 import com.example.gminchev.tabs.databinding.ActivityMainBinding;
+import com.example.gminchev.tabs.service.TestService;
+import com.example.gminchev.tabs.service.test;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static com.example.gminchev.tabs.OverallFragment.DATE_FORMAT;
 
 public class MainActivity extends AppCompatActivity implements OverallFragment.OnFragmentTitleListener {
     private Toolbar toolbar;
@@ -56,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements OverallFragment.O
         fragmentTransaction.add(R.id.grp_container, fragment);
         fragmentTransaction.disallowAddToBackStack();
         fragmentTransaction.commit();
+
+        //startService(new Intent(this, TestService.class));
     }
 
     private void setupLocation() {
@@ -119,6 +129,11 @@ public class MainActivity extends AppCompatActivity implements OverallFragment.O
 
 
         binding.toolbar.setTitle(title);
+    }
+
+    @Override
+    public void onViewPageChange(Date date) {
+            Log.e ("clickDate" , new SimpleDateFormat(DATE_FORMAT).format(new Date()));
     }
 
 

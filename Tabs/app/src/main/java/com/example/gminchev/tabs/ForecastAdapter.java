@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.example.gminchev.tabs.dataModel.HourlyForecast;
 import com.example.gminchev.tabs.databinding.WeatherDetailCardBinding;
+import com.example.gminchev.tabs.service.OnCartListener;
 
 /**
  * Created by teodo on 4/6/2018.
@@ -16,9 +17,10 @@ import com.example.gminchev.tabs.databinding.WeatherDetailCardBinding;
 public class ForecastAdapter extends RecyclerView.Adapter<ForecastHolder> {
 
     private HourlyForecast data;
-
+    private OnCartListener cartListener;
     public ForecastAdapter(HourlyForecast data) {
         this.data = data;
+       // this.cartListener = cartListener;
     }
 
     @Override
@@ -28,7 +30,6 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastHolder> {
                 R.layout.weather_detail_card, parent, false);
 
 
-
         return new ForecastHolder(binding);
 
 
@@ -36,7 +37,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastHolder> {
 
     @Override
     public void onBindViewHolder(ForecastHolder holder, int position) {
-        holder.bind(data.getForecasts().get(position));
+        holder.bind(data.getForecasts().get(position), cartListener);
 
     }
 
@@ -45,4 +46,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastHolder> {
         return data.getForecasts().size();
     }
 
+    public void setCartClickListner(DetailFragment cartClickListner) {
+        this.cartListener = cartClickListner;
+    }
 }

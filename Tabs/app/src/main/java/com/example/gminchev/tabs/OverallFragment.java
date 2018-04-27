@@ -21,6 +21,7 @@ import com.example.gminchev.tabs.dataModel.helper_models.Forecast;
 import com.example.gminchev.tabs.databinding.FragmentOverallBinding;
 import com.example.gminchev.tabs.databinding.FragmentTimelineBinding;
 import com.example.gminchev.tabs.databinding.WeatherCardBinding;
+import com.example.gminchev.tabs.service.OnCartListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,10 +31,11 @@ import static android.provider.Settings.System.DATE_FORMAT;
 public class OverallFragment extends Fragment{
 
     private OnFragmentTitleListener mListener;
+    private OnFragmentDataListener mDataListener;
     FragmentOverallBinding binding;
    private WeatherCardBinding grpCurrentWeather;
    private WeatherCardBinding grpTomorrowWeather;
-    private static final String DATE_FORMAT = "mm/dd/yyyy";
+    public static final String DATE_FORMAT = "mm/dd/yyyy";
 
     @Nullable
     @Override
@@ -69,6 +71,9 @@ public class OverallFragment extends Fragment{
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
+
+
         if (context instanceof OnFragmentTitleListener) {
             mListener = (OnFragmentTitleListener) context;
         } else {
@@ -131,7 +136,8 @@ public class OverallFragment extends Fragment{
         grpCurrentWeather.txtClouds.setText(getString(R.string.percantage_placeholder, (int) data.getCloudinessInPercentage()));
         grpCurrentWeather.txtWind.setText(getString(R.string.m_per_s_placeholder, (int) data.getWindSpeed()));
         grpCurrentWeather.txtHumidity.setText(getString(R.string.percantage_placeholder, (int) data.getHumidity()));
-        grpCurrentWeather.grpCard.setOnClickListener(v->Log.e("click cart", "click"));
+        Date dt = new Date();
+        grpCurrentWeather.grpCard.setOnClickListener(v->  mDataListener.onDataSend("Ihuu"));
 
     }
     private void updateDailyForecast(DailyForecast data) {
@@ -152,7 +158,12 @@ public class OverallFragment extends Fragment{
 
     public interface OnFragmentTitleListener {
         void onTitleChange(String title);
+        void onViewPageChange(Date date);
     }
 
+    public interface OnFragmentDataListener {
+        void onDataSend(String title);
+        //void onViewPageChange(Date date);
+    }
 
 }

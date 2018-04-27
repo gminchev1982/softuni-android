@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.gminchev.tabs.api.Api;
 import com.example.gminchev.tabs.dataModel.CurrentWeather;
@@ -21,9 +22,11 @@ import com.example.gminchev.tabs.dataModel.DailyForecast;
 import com.example.gminchev.tabs.dataModel.HourlyForecast;
 import com.example.gminchev.tabs.dataModel.helper_models.Forecast;
 import com.example.gminchev.tabs.databinding.FragmentDetailBinding;
+import com.example.gminchev.tabs.service.OnCartListener;
 
-public class DetailFragment extends Fragment {
+public class DetailFragment extends Fragment implements OnCartListener{
     FragmentDetailBinding binding;
+    OnCartListener cartListener;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -65,8 +68,14 @@ public class DetailFragment extends Fragment {
         Log.e("TAG", "updateHourly"  );
 
         ForecastAdapter adapter = new ForecastAdapter(data);
+        adapter.setCartClickListner(this);
         binding.recView.setAdapter(adapter);
+
         Log.e("TAG", "updateHourly"  );
     }
 
+    @Override
+    public void onDayClick(int position) {
+        Log.e ("CArtlISTENER",  String.valueOf(position));
+    }
 }

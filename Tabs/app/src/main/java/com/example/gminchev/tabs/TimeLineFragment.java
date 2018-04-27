@@ -7,11 +7,18 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gminchev.tabs.databinding.FragmentTimelineBinding;
+import com.example.gminchev.tabs.service.OnCartListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static com.example.gminchev.tabs.OverallFragment.DATE_FORMAT;
 
 public class TimeLineFragment extends Fragment {
 
@@ -50,8 +57,6 @@ public class TimeLineFragment extends Fragment {
         binding.grpTabs.setupWithViewPager(binding.viewpager);
       //  binding.viewpager.setCurrentItem(1);
 
-
-
         ViewPager.OnPageChangeListener pageChangeListener  = new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -74,8 +79,6 @@ public class TimeLineFragment extends Fragment {
 
 
     }
-
-
 
 
 
