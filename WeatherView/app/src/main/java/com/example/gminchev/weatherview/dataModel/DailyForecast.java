@@ -3,6 +3,7 @@ package com.example.gminchev.weatherview.dataModel;
 
 import com.example.gminchev.weatherview.dataModel.helper_models.Forecast;
 import com.example.gminchev.weatherview.dataModel.helper_models.LocationInfo;
+import com.example.gminchev.weatherview.dataModel.helper_models.ShortForecast;
 
 import java.util.List;
 
@@ -17,5 +18,8 @@ public class DailyForecast {
 
     public Forecast getForecastForDay(int dayIndex) {
         return list.get(dayIndex);
+    }
+    public List<Forecast> getForecasts() {
+        return list;
     }
 }

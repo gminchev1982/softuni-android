@@ -1,5 +1,6 @@
-package com.example.gminchev.weatherview;
+package com.example.gminchev.weatherview.ui;
 
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -14,15 +15,21 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 
+import com.example.gminchev.weatherview.R;
 import com.example.gminchev.weatherview.api.Api;
 import com.example.gminchev.weatherview.dataModel.CurrentWeather;
 import com.example.gminchev.weatherview.dataModel.DailyForecast;
 import com.example.gminchev.weatherview.dataModel.helper_models.Forecast;
+import com.example.gminchev.weatherview.dataRoom.WeatherDatabase;
 import com.example.gminchev.weatherview.databinding.FragmentOverallBinding;
 import com.example.gminchev.weatherview.databinding.WeatherCardBinding;
+import com.example.gminchev.weatherview.ui.WeatherUtils;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class OverallFragment extends Fragment{
 
@@ -37,24 +44,18 @@ public class OverallFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         binding = DataBindingUtil.inflate(inflater,
                 R.layout.fragment_overall, container, false);
         setupViews();
-
-
-
 
         return binding.getRoot();
     }
 
     private void setupViews() {
 
-        //grpCurrentWeather = DataBindingUtil.bind( binding.grpCurrentWeather.getRoot()  binding.grpCurrentWeather.getRoot());
           grpCurrentWeather = DataBindingUtil.bind(binding.grpCurrentWeather.getRoot());
-            grpTomorrowWeather = DataBindingUtil.bind(binding.grpTomorrowWeather.getRoot());
-
-            updateData();
+          grpTomorrowWeather = DataBindingUtil.bind(binding.grpTomorrowWeather.getRoot());
+          updateData();
        // grpCurrentWeather.
 
     }
@@ -86,8 +87,10 @@ public class OverallFragment extends Fragment{
         //String longitude = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(Constants.ShareKeyLongitude, null);
         //String latitude = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(Constants.ShareKeyLatitude, null);
 
-        String longitude = "42.697054";
-        String latitude = "23.328720";
+       // Log.e("long update", longitude);
+
+         String latitude = "42.697054";
+         String longitude = "23.328720";
 
         if(longitude != null) {
             Api.getInstance().getCurrentWeather(latitude, longitude,  new Api.DataListener<CurrentWeather>() {
@@ -155,6 +158,14 @@ public class OverallFragment extends Fragment{
 
     }
 
+    private void searchDay (long date){
+              Log.e ("dateLon", String.valueOf(date));
+
+
+    }
+
+
+
     public interface OnFragmentTitleListener {
         void onTitleChange(String title);
         void onViewPageChange(long date);
@@ -165,5 +176,8 @@ public class OverallFragment extends Fragment{
         void onFragmentTranserData(String data);
         //void onViewPageChange(Date date);
     }
+
+
+
 
 }

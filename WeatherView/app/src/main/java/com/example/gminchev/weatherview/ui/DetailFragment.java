@@ -1,8 +1,7 @@
-package com.example.gminchev.weatherview;
+package com.example.gminchev.weatherview.ui;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,13 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.gminchev.weatherview.R;
 import com.example.gminchev.weatherview.api.Api;
 import com.example.gminchev.weatherview.dataModel.HourlyForecast;
-import com.example.gminchev.weatherview.dataModel.helper_models.ShortForecast;
 import com.example.gminchev.weatherview.databinding.FragmentDetailBinding;
 import com.example.gminchev.weatherview.service.OnCartListener;
-
-import java.util.Collections;
 
 public class DetailFragment extends Fragment implements OnCartListener, OverallFragment.OnFragmentTitleListener{
     FragmentDetailBinding binding;
@@ -41,8 +38,9 @@ public class DetailFragment extends Fragment implements OnCartListener, OverallF
     }
 
     private void updateData() {
-        String longitude = "42.697054"; //PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(Constants.ShareKeyLongitude, null);
-        String latitude = "23.328720"; //PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(Constants.ShareKeyLatitude, null);
+        String latitude = "42.697054";
+        String longitude = "23.328720";
+
         Log.e("lat", String.valueOf(latitude));
         if(longitude != null) {
             Api.getInstance().getHourlyForecast(latitude, longitude, new Api.DataListener<HourlyForecast>() {
@@ -89,18 +87,7 @@ public class DetailFragment extends Fragment implements OnCartListener, OverallF
     @Override
     public void onViewPageChange(long date) {
         Log.e ("Detail", String.valueOf(date*1000));
-        int last= dataHourly.getForecasts().size();
-        String dtstr = String.valueOf(date).substring(0, 5);
-       // adapter.getFilter().filter(dtstr);
 
-
-       // dataHourly.getForecasts().remove((last-1));
-        adapter.notifyDataSetChanged();
-        Log.e("TAG", "updateHourly"  );
-        for (ShortForecast dt : dataHourly.getForecasts()){
-            Log.e("dd", String.valueOf(dt.getTimestamp()));
-
-        }
          //System.out.println(dataHourly.getForecasts().toString());
     }
 }

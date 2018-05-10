@@ -1,4 +1,4 @@
-package com.example.gminchev.weatherview;
+package com.example.gminchev.weatherview.ui;
 
 /**
  * Created by minchev on 27.3.2018 г..

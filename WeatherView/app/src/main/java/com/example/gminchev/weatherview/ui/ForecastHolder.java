@@ -1,12 +1,14 @@
-package com.example.gminchev.weatherview;
+package com.example.gminchev.weatherview.ui;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 
+import com.example.gminchev.weatherview.R;
 import com.example.gminchev.weatherview.dataModel.helper_models.ShortForecast;
 import com.example.gminchev.weatherview.databinding.WeatherDetailCardBinding;
 import com.example.gminchev.weatherview.service.OnCartListener;
+import com.example.gminchev.weatherview.ui.WeatherUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -1,4 +1,6 @@
-package com.example.gminchev.weatherview;
+package com.example.gminchev.weatherview.ui;
+
+import com.example.gminchev.weatherview.R;
 
 import static com.example.gminchev.weatherview.dataModel.WeatherType.CLEAR;
 import static com.example.gminchev.weatherview.dataModel.WeatherType.CLOUDS;

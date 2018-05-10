@@ -1,10 +1,11 @@
-package com.example.gminchev.weatherview;
+package com.example.gminchev.weatherview.ui;
 
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.example.gminchev.weatherview.R;
 import com.example.gminchev.weatherview.dataModel.HourlyForecast;
 import com.example.gminchev.weatherview.databinding.WeatherDetailCardBinding;
 import com.example.gminchev.weatherview.service.OnCartListener;

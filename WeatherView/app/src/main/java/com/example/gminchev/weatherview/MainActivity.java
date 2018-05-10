@@ -17,12 +17,13 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.gminchev.weatherview.databinding.ActivityMainBinding;
+import com.example.gminchev.weatherview.ui.Constants;
+import com.example.gminchev.weatherview.ui.OverallFragment;
+import com.example.gminchev.weatherview.ui.PagerAdapter;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity  implements OverallFragment.OnFragmentTitleListener{
 private ActivityMainBinding binding;
@@ -106,7 +107,7 @@ private ActivityMainBinding binding;
                             Log.e("lat", String.valueOf(mLatitude));
                             Log.e("long", String.valueOf(mLongitude));
 
-                           // PreferenceManager.getDefaultSharedPreferences(context).edit().putString(Constants.ShareKeyLongitude, String.valueOf(mLongitude)).commit();
+                          //  PreferenceManager.getDefaultSharedPreferences(context).edit().putString(Constants.ShareKeyLongitude, String.valueOf(mLongitude)).commit();
                            // PreferenceManager.getDefaultSharedPreferences(context).edit().putString(Constants.ShareKeyLatitude, String.valueOf(mLatitude)).commit();
 
                         }

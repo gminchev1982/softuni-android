@@ -105,6 +105,29 @@ public class Api {
     }
 
 
+    public void getDaily(String latitude, String longtitude, final DataListener<DailyForecast> listener) {
+        Log.e("TAG", "Get forecast called");
+        String lat = String.format("%.2f", Double.valueOf(latitude));
+        String lon = String.format("%.2f", Double.valueOf(longtitude));
+        Log.e("TAG", lat);
+        service.getDailyForecast(lat, lon, WeatherService.API_KEY, 7, UNITS_METRIC).enqueue(new Callback<DailyForecast>() {
+            @Override
+            public void onResponse(@NonNull Call<DailyForecast> call, @NonNull Response<DailyForecast> response) {
+                if(response.isSuccessful() && response.body() != null) {
+                    listener.onSuccess(response.body());
+                } else {
+                    listener.onError();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DailyForecast> call, Throwable t) {
+                listener.onError();
+                Log.e("TAG", "getDailyForecast", t);
+            }
+        });
+    }
+
     public interface DataListener<T> {
         void onSuccess(T data);
         void onError();
