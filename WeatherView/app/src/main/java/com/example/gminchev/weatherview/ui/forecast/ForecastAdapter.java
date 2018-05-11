@@ -1,4 +1,4 @@
-package com.example.gminchev.weatherview.ui;
+package com.example.gminchev.weatherview.ui.forecast;
 
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;

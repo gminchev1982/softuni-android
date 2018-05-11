@@ -19,5 +19,6 @@ public class WeatherViewModel extends AndroidViewModel {
 
     public LiveData<List<WeatherEntity>> getAllWeather() { return mAllWeather; }
 
-    public void insert(WeatherEntity word) { mRepository.insert(word); }
+    public void insert(WeatherEntity weather) { mRepository.insert(weather); }
+    public void update(WeatherEntity weather) { mRepository.update(weather); }
 }

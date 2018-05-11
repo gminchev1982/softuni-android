@@ -40,12 +40,13 @@ public class DailyAdapter extends RecyclerView.Adapter<DailyHolder> {
 
 
     public void setData(List<WeatherEntity> data) {
-        this.data = data;
+            this.data = data;
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
+
        if (data==null)
         return 0;
        else return  data.size();

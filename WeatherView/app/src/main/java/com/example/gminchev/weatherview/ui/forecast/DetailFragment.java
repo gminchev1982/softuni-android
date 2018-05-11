@@ -1,4 +1,4 @@
-package com.example.gminchev.weatherview.ui;
+package com.example.gminchev.weatherview.ui.forecast;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -16,8 +16,9 @@ import com.example.gminchev.weatherview.api.Api;
 import com.example.gminchev.weatherview.dataModel.HourlyForecast;
 import com.example.gminchev.weatherview.databinding.FragmentDetailBinding;
 import com.example.gminchev.weatherview.service.OnCartListener;
+import com.example.gminchev.weatherview.ui.OverallFragment;
 
-public class DetailFragment extends Fragment implements OnCartListener, OverallFragment.OnFragmentTitleListener{
+public class DetailFragment extends Fragment implements OnCartListener, OverallFragment.OnFragmentTitleListener {
     FragmentDetailBinding binding;
     OnCartListener cartListener;
     private HourlyForecast dataHourly;

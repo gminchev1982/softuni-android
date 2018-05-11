@@ -3,6 +3,7 @@ package com.example.gminchev.weatherview.dataRoom;
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.util.List;
 
@@ -34,6 +35,10 @@ public class WeatherRepository {
         new insertAsyncTask(mWeatherDao).execute(weather);
     }
 
+    public void update (WeatherEntity weather) {
+        new updateAsyncTask(mWeatherDao).execute(weather);
+    }
+
     private static class insertAsyncTask extends AsyncTask<WeatherEntity, Void, Void> {
 
         private WeatherDao mAsyncTaskDao;
@@ -44,7 +49,24 @@ public class WeatherRepository {
 
         @Override
         protected Void doInBackground(final WeatherEntity... params) {
-            mAsyncTaskDao.insert(params[0]);
+           long id =  mAsyncTaskDao.insert(params[0]);
+           Log.e ("ddd", String.valueOf(id));
+            return null;
+        }
+    }
+
+    private static class updateAsyncTask extends AsyncTask<WeatherEntity, Void, Void> {
+
+        private WeatherDao mAsyncTaskDao;
+
+        updateAsyncTask(WeatherDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(WeatherEntity... params) {
+            mAsyncTaskDao.update(params[0]);
+
             return null;
         }
     }

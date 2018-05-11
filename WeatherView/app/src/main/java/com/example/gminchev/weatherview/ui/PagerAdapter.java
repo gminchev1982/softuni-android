@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.gminchev.weatherview.ui.daily.DailyFragment;
+import com.example.gminchev.weatherview.ui.forecast.DetailFragment;
 
 public class PagerAdapter extends FragmentPagerAdapter implements OverallFragment.OnFragmentTitleListener{
 
