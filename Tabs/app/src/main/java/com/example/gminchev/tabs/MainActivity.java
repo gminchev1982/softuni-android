@@ -126,8 +126,6 @@ public class MainActivity extends AppCompatActivity implements OverallFragment.O
 
     @Override
     public void onTitleChange(String title) {
-
-
         binding.toolbar.setTitle(title);
     }
 

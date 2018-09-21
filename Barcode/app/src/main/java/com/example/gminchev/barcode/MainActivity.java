@@ -24,11 +24,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.txt_barcode)    TextView txtBarcode;
-    @BindView(R.id.btn_search)     Button btnSearch;
-    @BindView(R.id.txt_code)       TextView txtCode;
-    @BindView(R.id.txt_product)    TextView txtProduct;
-    @BindView(R.id.txt_gredient)   TextView txtGredient;
+    @BindView(R.id.txt_barcode)
+    TextView txtBarcode;
+    @BindView(R.id.btn_search)
+    Button btnSearch;
+    @BindView(R.id.txt_code)
+    TextView txtCode;
+    @BindView(R.id.txt_product)
+    TextView txtProduct;
+    @BindView(R.id.txt_gredient)
+    TextView txtGredient;
     AppDatabase db;
     ProductEntity data;
     private final static String TAG = "TAG";
@@ -45,12 +50,12 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_search)
     public void onSearch() {
         final String barcode = txtBarcode.getText().toString();
-        Log.e(TAG,String.valueOf(barcode));
+        Log.e(TAG, String.valueOf(barcode));
         new AsyncTask<Void, Void, ProductEntity>() {
             @Override
             protected ProductEntity doInBackground(Void... params) {
 
-                Log.e(TAG,String.valueOf(barcode));
+                Log.e(TAG, String.valueOf(barcode));
                 return db.ProductDao().searchBarcode(barcode);
             }
 
@@ -61,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 if (dbResult != null) {
                     displayData(dbResult);
                 } else {
-                    Log.e("DBRESULT",String.valueOf(dbResult));
+                    Log.e("DBRESULT", String.valueOf(dbResult));
 
 
                     getSearchData(barcode);
@@ -85,10 +90,10 @@ public class MainActivity extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     data = response.body();
-                    Log.e("getCode:",data.getCode());
-                    Log.e("GETSTATUS",String.valueOf(data.getStatus()));
+                    Log.e("getCode:", data.getCode());
+                    Log.e("GETSTATUS", String.valueOf(data.getStatus()));
 
-                    if (data.getStatus()!=0) insertInDb(data);
+                    if (data.getStatus() != 0) insertInDb(data);
                     displayData(data);
                 }
 
@@ -96,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ProductEntity> call, Throwable t) {
-                    Log.e(TAG, "Failure");
+                Log.e(TAG, "Failure");
             }
 
 
@@ -114,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected Long doInBackground(Long... params) {
                 Long ids = db.ProductDao().insert(data);
-                Log.e ("dddd", String.valueOf(ids));
+                Log.e("dddd", String.valueOf(ids));
                 return ids;
             }
 
@@ -138,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         String code = data.getCode();
         int status = data.getStatus();
         Log.e(TAG, String.valueOf(status));
-        if (status==1) {
+        if (status == 1) {
             txtCode.setText(data.getCode());
         } else {
             txtCode.setText("Not found!");

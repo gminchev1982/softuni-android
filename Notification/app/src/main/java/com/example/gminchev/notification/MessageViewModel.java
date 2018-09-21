@@ -1,21 +1,40 @@
 package com.example.gminchev.notification;
 
+import android.app.Application;
+import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 
+import com.example.gminchev.notification.Model.Message;
+import com.example.gminchev.notification.firebase.FirebaseQueryLiveData;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MessageViewModel extends ViewModel {
-    private static final DatabaseReference HOT_STOCK_REF =
-            FirebaseDatabase.getInstance().getReference("/messages");
+import java.util.List;
 
-    private final FirebaseQueryLiveData liveData = new FirebaseQueryLiveData(HOT_STOCK_REF);
+public class MessageViewModel extends AndroidViewModel {
 
-    @NonNull
+    private List<Message> mADataSnapshot;
+    private static final DatabaseReference MESSAGE_REF =
+            FirebaseDatabase.getInstance().getReference("messages");
+
+    private FirebaseQueryLiveData mLiveData = new FirebaseQueryLiveData(MESSAGE_REF);
+
+    public MessageViewModel(@NonNull Application application) {
+        super(application);
+
+    }
+
     public LiveData<DataSnapshot> getDataSnapshotLiveData() {
-        return liveData;
+
+        return mLiveData;
+    }
+
+    public void update(Message message) {
+        Message messageUpdate = new Message(message.getText());
+        MESSAGE_REF.child(message.getKeyChild()).setValue(messageUpdate);
+
+
     }
 }

@@ -12,7 +12,7 @@ public class ProductEntity {
     private int _id;
 
     private String code;
-    @ColumnInfo
+
     private int status;
 
    /* @ColumnInfo(name="product_name")

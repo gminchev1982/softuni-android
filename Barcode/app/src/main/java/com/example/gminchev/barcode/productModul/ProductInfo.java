@@ -3,8 +3,7 @@ package com.example.gminchev.barcode.productModul;
 /**
  * Created by GMinchev on 12.4.2018 г..
  */
-class
-Product {
+class Product {
 
     String product_name;
     String ingredients_text;

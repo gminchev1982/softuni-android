@@ -28,8 +28,7 @@ public class GamesDatabase {
                 new Games("Phoenix Point", "https://scontent.fsof3-1.fna.fbcdn.net/v/t31.0-8/27797701_565998913780353_8962408062466919539_o.jpg?oh=0f0d7a502e6b562df4527ffd08ea91be&oe=5B0AA6FA"),
                 new Promotion("http://dreamicus.com/data/image/image-01.jpg", "https://www.blackseagames.com/"),
                 new Games("Call of Duty", "https://static.gamespot.com/uploads/screen_petite/1576/15769789/3248384-callofduty_wwii_screen1.jpg"),
-                new Promotion("http://dreamicus.com/data/image/image-01.jpg", "https://www.blackseagames.com/"
-                3)
+                new Promotion("http://dreamicus.com/data/image/image-01.jpg", "https://www.blackseagames.com/")
          );
     }
 

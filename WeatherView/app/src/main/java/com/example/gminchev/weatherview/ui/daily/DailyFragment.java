@@ -95,9 +95,7 @@ public class DailyFragment extends Fragment {
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
         mWeatherViewModel.getAllWeather().observe (this, (List<WeatherEntity> weathers) ->{
-           Log.e("Weathers", String.valueOf(weathers.size()));
             if (weathers==null) {
-                Log.e ("Weathers", "NUlll");
                 adapter.setData(weathers);
             }else {
 
